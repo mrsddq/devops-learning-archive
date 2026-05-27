@@ -4,4 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["python", "-m", "devops_toolkit.cli", "--strict"]
+RUN useradd --create-home --shell /usr/sbin/nologin appuser
+USER appuser
+
+CMD ["python", "-m", "devops_toolkit.cli", "--root", ".", "--strict"]
