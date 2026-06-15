@@ -41,6 +41,8 @@ Keep this repository as a learning archive. For showcase work, extract polished 
 - `docker-kubernetes-labs`
 - `azure-terraform-foundations`
 
+Use [docs/SHOWCASE_EXTRACTION_PLAN.md](docs/SHOWCASE_EXTRACTION_PLAN.md) to decide what should become a focused repo.
+
 ## Repository Audit
 
 ```bash
