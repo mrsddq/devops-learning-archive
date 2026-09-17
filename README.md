@@ -1,6 +1,6 @@
 # DevOps Learning Archive
 
-Serious DevOps learning and reference archive covering Linux, Git, Jenkins, Maven, Tomcat, Docker, Kubernetes, Terraform, AWS, and Azure.
+DevOps learning and reference archive covering Linux, Git, Jenkins, Maven, Tomcat, Docker, Kubernetes, Terraform, AWS, and Azure.
 
 This repository is intentionally an archive, but it now has a learning spine so the material reads as a coherent DevOps path instead of disconnected notes.
 
@@ -45,6 +45,8 @@ Use [docs/SHOWCASE_EXTRACTION_PLAN.md](docs/SHOWCASE_EXTRACTION_PLAN.md) to deci
 
 ## Repository Audit
 
+Python 3.11 and the standard library are sufficient; there is no package-install step. Run from the repository root:
+
 ```bash
 python scripts/devops_audit.py --strict
 python -m devops_toolkit.cli --json
@@ -52,3 +54,9 @@ python -m unittest discover -s tests
 ```
 
 The toolkit inventories Terraform, Kubernetes YAML, Jenkins/Groovy, Dockerfiles, and documentation. It flags common repository hygiene issues such as unpinned Docker base images, missing Docker copy sources, unpinned Kubernetes image tags, and secret-like markers.
+
+## What the checks establish
+
+The unit tests exercise the archive auditor and its command-line entry point. The JSON command produces an inventory and findings report; `--strict` fails when policy findings remain. This is a static heuristic audit, not a Terraform plan, Kubernetes deployment test, or proof that historical labs are secure. Run old provisioning commands only after reviewing their account, cost, credentials, and cleanup assumptions.
+
+Earlier lesson files and attribution are preserved as a learning record. For the maintained standalone auditing project, see [DevOps Policy Audit Toolkit](https://github.com/mrsddq/devops-policy-audit-toolkit).
