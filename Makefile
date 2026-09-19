@@ -1,8 +1,4 @@
-.PHONY: install test audit reports clean
-
-install:
-	python -m pip install --upgrade pip
-	python -m pip install -e .[dev]
+.PHONY: test audit reports clean
 
 test:
 	python -m unittest discover -s tests
