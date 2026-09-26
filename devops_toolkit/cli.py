@@ -23,9 +23,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
     config = load_config(args.config)
-    report = run_audit(args.root)
+    try:
+        report = run_audit(args.root)
+    except ValueError as exc:
+        parser.error(str(exc))
     report.findings = config.policy.filter_findings(report.findings)
     if args.write_baseline:
         write_baseline(args.write_baseline, report.findings)
